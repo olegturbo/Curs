@@ -1,58 +1,127 @@
-        .header{
-            display: flex;
-        }
-        
-        .wrapper {
-            width: 1300px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+            /* HEADER PART 1  */
+            .header {
+                display: flex;
+            }
 
-        .right-caption {
-            display: flex;
-            align-items: center; 
-            padding-bottom: 30px;
-        }
-        .description-logo{
-            color: rgba(17, 24, 39, 1);
-            font-family: Inter,sans-serif;
-            font-size: 24px;
-            font-weight: 900;
-            line-height: 32px;
-        }
-        .navbar{
-        padding-left:40px;
-        }
-        .navigation{
-            padding-right: 24px;
-            text-decoration: none;
-            font-family: Inter,sans-serif;
-            font-size: 16px;
-            color: rgba(17, 24, 39, 1);
-            transition: 0.2s;
-        }
+            .wrapper {
+                width: 1300px;
+                margin: 0 auto;
+                padding: 20px;
+            }
 
-        .space{
-        }
+            .header {
+                display: flex;
+                justify-content: space-between;
+            }
 
-        .navigation:hover{
-            text-decoration: underline dotted;
-            text-decoration-thickness: 2px;
-            text-underline-offset: 4px; 
-            color: rgba(139, 92, 246, 1);
-        }
+            .right-caption {
+                display: flex;
+                align-items: center;
+                padding-bottom: 30px;
+            }
 
-        .info-marfa{
-        display: inline-flex;
-        vertical-align: middle;
-        }
-        .delimiter{
-            margin: 0 13px 0 13px;
-            border: 1px solid  rgba(167, 139, 250, 0.434);
-        }
-        .phone{
-        vertical-align: middle;
-        display: inline-flex;
-        }
+            .description-logo {
+                color: rgba(17, 24, 39, 1);
+                font-family: Inter, sans-serif;
+                font-size: 24px;
+                font-weight: 900;
+                line-height: 32px;
+            }
 
-        
+            .navbar {
+                padding-left: 40px;
+            }
+
+            .navigation {
+                padding-right: 24px;
+                text-decoration: none;
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                color: rgba(17, 24, 39, 1);
+                transition: 0.2s;
+                font-weight: 700;
+            }
+
+            .info-marfa {
+                display: flex;
+                vertical-align: middle;
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                text-align: right;
+            }
+
+            .navigation:hover {
+                text-decoration: underline dotted;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 4px;
+                color: rgba(139, 92, 246, 1);
+            }
+
+
+            /* PART 2 HEADER */
+
+            .header__inner-left {
+                padding-bottom: 35px;
+            }
+
+            .info-marfa {
+                display: inline-flex;
+            }
+
+            .delimiter {
+                margin: 0 13px 0 13px;
+                border: 1px solid rgba(167, 139, 250, 0.434);
+            }
+
+            .strong {
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                font-weight: 900;
+                margin-bottom: -20px;
+            }
+
+            .phone {
+                display: inline-flex;
+                flex-direction: column;
+                font-family: Inter, sans-serif;
+                font-weight: 200;
+                font-weight: 300;
+                font-size: 18px;
+                color: rgba(17, 24, 39, 1);
+                vertical-align: middle;
+                margin: 0;
+            }
+
+            .container-btn {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .btn {
+                width: 165px;
+                height: 41px;
+                border-radius: 4px;
+                font-size: 15px;
+                background: rgba(139, 92, 246, 1);
+                color: rgba(249, 250, 251, 1);
+                border: none;
+                font-family: Inter, sans-serif;
+                font-weight: 700;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            .btn:hover {
+                background: rgba(109, 40, 217, 1);
+            }
+
+
+            /*   MAIN (SECTION 1)  */
+
+            .main {
+                /* background-color: rgba(229, 231, 235, 1); */
+                padding-left: 40px;
+            }
