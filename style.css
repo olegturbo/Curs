@@ -122,6 +122,41 @@
             /*   MAIN (SECTION 1)  */
 
             .main {
-                /* background-color: rgba(229, 231, 235, 1); */
+                background-color: rgba(229, 231, 235, 1);
                 padding-left: 40px;
+            }
+
+            .main__inner-one {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .title {
+                font-family: Inter, sans-serif;
+                font-size: 30px;
+                font-weight: 900;
+                color: rgba(17, 24, 39, 1);
+                margin: 0;
+
+            }
+
+            .main__inner-left {
+                padding-top: 61px;
+            }
+
+            .subtext {
+                font-family: Inter, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            .main__inner-right {
+                padding-top: 120px;
+            }
+
+            .border {
+                width: 500px;
+                height: 484px;
+                background-color: #fff;
+                border-radius: 16px;
             }
