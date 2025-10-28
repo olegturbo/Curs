@@ -160,3 +160,22 @@
                 background-color: #fff;
                 border-radius: 16px;
             }
+
+            .form-container {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .colone-one, .colone-two {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+            }
+
+            .input-email {
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+            }
