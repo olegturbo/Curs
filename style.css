@@ -261,3 +261,129 @@
                 text-align: left;
 
             }
+
+            /*   MAIN (SECTION 2)  */
+
+            .title-three {
+                text-align: center;
+                padding-top: 72px;
+                margin: 0 0 25px 0;
+                font-family: Inter, sans-serif;
+                font-size: 30px;
+                font-weight: 900;
+                line-height: 36px;
+                letter-spacing: 0%;
+            }
+
+            .subtitle-three {
+                color: rgba(17, 24, 39, 1);
+                font-family: Inter, sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0%;
+                text-align: center;
+            }
+
+            .container__img-three {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 50px;
+                flex-wrap: wrap;
+                margin-top: 40px;
+            }
+
+            .container__img-three figure {
+                text-align: center;
+                max-width: 180px;
+            }
+
+            .container__img-three img {
+                width: 135%;
+                height: auto;
+                border-radius: 10px;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+                vertical-align: middle;
+            }
+
+            .container__img-three img:hover {
+                transform: scale(1.05);
+            }
+
+            .description__three {
+                width: 240px;
+                text-align: center;
+                font-family: Inter, sans-serif;
+                margin-top: 10px;
+                font-size: 16px;
+                font-weight: 900;
+                color: rgba(17, 24, 39, 1);
+            }
+
+            .btn-garant {
+                width: 280px;
+                height: 46px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                font-family: Inter, sans-serif;
+                padding: 16px 28px 16px 28px;
+                text-align: start;
+            }
+
+            .popup {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                padding-top: 60px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            .popup-content {
+                margin: auto;
+                display: block;
+                max-width: 70%;
+                border-radius: 10px;
+                animation: fadeIn 0.4s;
+            }
+
+            #popup-caption {
+                text-align: center;
+                color: #fff;
+                font-size: 18px;
+                margin-top: 10px;
+            }
+
+            .popup-close {
+                position: absolute;
+                top: 25px;
+                right: 35px;
+                color: #fff;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: color 0.3s;
+            }
+
+            .popup-close:hover {
+                color: #ff5252;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
