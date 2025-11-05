@@ -387,3 +387,80 @@
                     opacity: 1;
                 }
             }
+
+            /*   MAIN (SECTION 3)  */
+
+            .feedback {
+                font-family: Inter, sans-serif;
+                font-size: 24px;
+                font-weight: 900;
+                line-height: 32px;
+                text-align: center;
+                color: rgba(17, 24, 39, 1);
+                padding-top: 72px;
+            }
+
+
+
+            .container-slider {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .arrow-left:hover {
+                transition: 0.2s;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+
+            .arrow-right:hover {
+                transition: 0.2s;
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+
+            .review-one {
+                width: 38%;
+                height: 250px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 30;
+                padding: 32px 16px 32px 16px;
+                border-radius: 16px;
+                background: rgba(249, 250, 251, 1);
+            }
+
+            .description-review {
+                color: rgba(17, 24, 39, 1);
+                font-family: Inter, sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 25px;
+                text-align: left;
+            }
+
+            .position-name {
+                display: flex;
+                align-items: last baseline;
+                flex-direction: row-reverse;
+                padding: 0;
+                margin: 0;
+            }
+
+            .position-figure {
+                padding-left: 300px;
+            }
+
+            .name-review {
+                font-family: Inter, sans-serif;
+                color: rgba(107, 114, 128, 1);
+                font-family: Formular;
+                font-size: 18px;
+                font-weight: 300;
+                text-align: left;
+            }
+
+            /*   MAIN (SECTION 4)  */
