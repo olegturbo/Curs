@@ -479,6 +479,7 @@
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
                 width: 100%;
                 text-align: center;
+                margin-bottom: 72px;
             }
 
             .feedback-title {
@@ -531,3 +532,79 @@
             .form-container-two .btn:hover {
                 background: #7c4dff;
             }
+
+            /*   FOOTER  */
+            .footer {
+                background: rgba(17, 24, 39, 1);
+            }
+
+            .description-logo-footer {
+                color: #fff;
+                font-family: Inter, sans-serif;
+                font-size: 24px;
+                font-weight: 900;
+                line-height: 32px;
+            }
+
+            .container__footer-one {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .navbar-footer {
+                padding-top: 45px;
+            }
+
+            .navigation-footer {
+                padding-right: 24px;
+                text-decoration: none;
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                color: rgb(255, 255, 255);
+                transition: 0.2s;
+                font-weight: 700;
+            }
+
+            .navigation-footer:hover {
+                text-decoration: underline dotted;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 4px;
+                color: rgb(235, 229, 248);
+            }
+
+
+            .strong-footer {
+                margin: 0;
+                padding: 0;
+                font-size: 20px;
+                font-weight: 900;
+                margin-bottom: -20px;
+                padding-top: 30px;
+            }
+
+            .phone-footer {
+                display: inline-flex;
+                flex-direction: column;
+                font-family: Inter, sans-serif;
+                font-weight: 200;
+                font-weight: 300;
+                font-size: 18px;
+                color: rgb(255, 255, 255);
+                vertical-align: middle;
+                margin: 0;
+            }
+
+            .container__footer-two {
+                padding-left: px;
+            }
+
+            .drepturile {}
+
+            .three__footrer {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .legea {}
+
+            .autor {}
