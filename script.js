@@ -43,7 +43,8 @@ function slideEffect(direction = 'next') {
 nextBtn.addEventListener('click', () => slideEffect('next'));
 prevBtn.addEventListener('click', () => slideEffect('prev'));
 
-
-
-
-
+//Mesaj in consola
+const btnMessage = document.querySelector(".btn");
+btnMessage.onclick = function () {
+    console.log("Cererea dumnevoastra a fost trimisa");
+}
