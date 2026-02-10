@@ -52,13 +52,31 @@ headerContainerLeft.className = 'header__container-left';
 const headerInnerLeft = document.createElement('div');
 headerInnerLeft.className = 'header__inner-left';
 
+const deliveryInfo = {
+    message: "Aducem orice marfa in Moldova de peste hotare",
+    minPrice: 100,
+    currencyRates: {
+        USD: 16.7,
+        EUR: 20
+    },
+    phone: "+373 (60)-00-000",
+    phoneInfo: "Apelurile gratuite in MD"
+};
+
+// Creezi elementul pentru info marfa
 const pInfoMarfa = document.createElement('p');
 pInfoMarfa.className = 'info-marfa';
-pInfoMarfa.innerHTML = `Aducem orice marfa in Moldova de peste hotare<br> Pretul incepe de la 100 de lei pe comanda<br>1 $ = 16.70 MDL | 1 € = 20 MDL<span class="delimiter"></span>`;
+pInfoMarfa.innerHTML = `${deliveryInfo.message}<br>
+Pretul incepe de la ${deliveryInfo.minPrice} de lei pe comanda<br>
+1 $ = ${deliveryInfo.currencyRates.USD} MDL | 1 € = ${deliveryInfo.currencyRates.EUR} MDL
+<span class="delimiter"></span>`;
 
+
+// Creezi elementul pentru telefon
 const pPhone = document.createElement('p');
 pPhone.className = 'phone';
-pPhone.innerHTML = `<strong class="strong">+373 (60)-00-000 </strong><br>Apelurile gratuite in MD`;
+pPhone.innerHTML = `<strong class="strong">${deliveryInfo.phone}</strong><br>${deliveryInfo.phoneInfo}`;
+
 
 headerInnerLeft.appendChild(pInfoMarfa);
 headerInnerLeft.appendChild(pPhone);
