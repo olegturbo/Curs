@@ -1,3 +1,4 @@
+// ============HEADER=============================
 const wrapper = document.querySelector('.wrapper');
 
 // Creare header
@@ -53,14 +54,14 @@ const headerInnerLeft = document.createElement('div');
 headerInnerLeft.className = 'header__inner-left';
 
 const deliveryInfo = {
-    message: "Aducem orice marfa in Moldova de peste hotare",
-    minPrice: 100,
-    currencyRates: {
-        USD: 16.7,
-        EUR: 20
-    },
-    phone: "+373 (60)-00-000",
-    phoneInfo: "Apelurile gratuite in MD"
+  message: "Aducem orice marfa in Moldova de peste hotare",
+  minPrice: 100,
+  currencyRates: {
+    USD: 16.7,
+    EUR: 20
+  },
+  phone: "+373 (60)-00-000",
+  phoneInfo: "Apelurile gratuite in MD"
 };
 
 // Creezi elementul pentru info marfa
@@ -96,5 +97,181 @@ headerContainerLeft.appendChild(containerBtn);
 header.appendChild(headerInnerRight);
 header.appendChild(headerContainerLeft);
 
+
+
 // Inserează headerul înainte de primul copil al .wrapper (dacă vrei să păstrezi ordinea)
 wrapper.insertBefore(header, wrapper.firstChild);
+
+// ================== SELECTARE WRAPPER CORECT ==================
+const wrappers = document.querySelectorAll('.wrapper');
+const mainWrapper = wrappers[1]; // al doilea wrapper
+
+
+// ================== MAIN INNER ONE ==================
+const mainInnerOne = document.createElement('div');
+mainInnerOne.className = 'main__inner-one';
+
+
+// ================= LEFT SIDE =================
+const sectionLeft = document.createElement('section');
+sectionLeft.className = 'main__inner-left';
+
+const title = document.createElement('h1');
+title.className = 'title';
+title.innerHTML = `
+Livrare fără probleme a articolelor <br>
+achiziționate din SUA, Europa și Asia <br>
+în Moldova
+`;
+
+const subtext = document.createElement('h3');
+subtext.className = 'subtext';
+subtext.innerHTML = `
+Economisiți la cumpărături și bucurați-vă de mărci globale - <br>
+serviciul nostru vă permite să comandați ușor și convenabil produse din întreaga <br>
+lume și să le primiți în Moldova
+`;
+
+const imgRectangle = document.createElement('img');
+imgRectangle.className = 'img-rectlange';
+imgRectangle.src = 'img/Rectangle.png';
+imgRectangle.alt = 'Rectangle';
+
+sectionLeft.append(title, subtext, imgRectangle);
+
+
+// ================= RIGHT SIDE (CALCULATOR) =================
+const sectionRight = document.createElement('section');
+sectionRight.id = 'calculare';
+sectionRight.className = 'main__inner-right';
+
+const border = document.createElement('div');
+border.className = 'border';
+
+const titleCalculator = document.createElement('h3');
+titleCalculator.className = 'title-calculator';
+titleCalculator.textContent = 'Calculatorul livrarii';
+
+const subtextCalculator = document.createElement('p');
+subtextCalculator.className = 'subtext-calculator';
+subtextCalculator.innerHTML = `
+Calculează cât va costa expedierea achiziției <br>
+tale din străinătate
+`;
+
+const form = document.createElement('form');
+form.className = 'form';
+
+
+// ========== INPUT NUME ==========
+const inputName = document.createElement('input');
+inputName.type = 'text';
+inputName.name = 'name';
+inputName.placeholder = 'Nume';
+inputName.className = 'text';
+
+form.appendChild(inputName);
+
+
+// ========== CONTAINER COLOANE ==========
+const formContainer = document.createElement('div');
+formContainer.className = 'form-container';
+
+const colOne = document.createElement('div');
+colOne.className = 'colone-one';
+
+const colTwo = document.createElement('div');
+colTwo.className = 'colone-two';
+
+// INPUTURI STÂNGA
+const inputsLeft = [
+  { type: 'email', name: 'email', placeholder: 'Email' },
+  { type: 'text', name: 'telefon', placeholder: 'Telefon' },
+  { type: 'number', name: 'suprafata', placeholder: 'Suprafață totală, m²' },
+  { type: 'number', name: 'greutate', placeholder: 'Greutate, kg' }
+];
+
+inputsLeft.forEach(data => {
+  const input = document.createElement('input');
+  input.type = data.type;
+  input.name = data.name;
+  input.placeholder = data.placeholder;
+  input.className = 'input';
+  colOne.appendChild(input);
+});
+
+// INPUTURI DREAPTA
+const inputsRight = [
+  { name: 'tara', placeholder: 'Țara de achiziție' },
+  { name: 'oras_cumparare', placeholder: 'Orașul de cumpărare' },
+  { name: 'zona_livrare', placeholder: 'Zona de livrare' },
+  { name: 'oras_livrare', placeholder: 'Orașul de livrare' }
+];
+
+inputsRight.forEach(data => {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = data.name;
+  input.placeholder = data.placeholder;
+  input.className = 'input';
+  colTwo.appendChild(input);
+});
+
+formContainer.append(colOne, colTwo);
+form.appendChild(formContainer);
+
+
+// ================= BUTON =================
+const btnCalculator = document.createElement('button');
+btnCalculator.type = 'button';
+btnCalculator.className = 'btn btn-calculator';
+btnCalculator.textContent = 'Comanda o calculare';
+
+
+// ================= REZULTAT =================
+const result = document.createElement('div');
+result.className = 'calculator-result';
+result.style.marginTop = '15px';
+result.style.fontWeight = 'bold';
+
+
+// ================= LOGICA CALCULATOR =================
+btnCalculator.addEventListener('click', () => {
+
+  const greutate = parseFloat(form.querySelector('[name="greutate"]').value) || 0;
+  const suprafata = parseFloat(form.querySelector('[name="suprafata"]').value) || 0;
+
+  if (greutate <= 0) {
+    result.textContent = "Introduceți greutatea corectă!";
+    result.style.color = "red";
+    return;
+  }
+
+  // FORMULA EXEMPLU:
+  // 100 lei bază + 50 lei/kg + 20 lei/m²
+  const basePrice = 100;
+  const pricePerKg = 50;
+  const pricePerM2 = 20;
+
+  const total = basePrice + (greutate * pricePerKg) + (suprafata * pricePerM2);
+
+  result.style.color = "green";
+  result.textContent = `Cost estimativ livrare: ${total.toFixed(2)} MDL`;
+});
+
+
+// ================= ASAMBLARE =================
+border.append(
+  titleCalculator,
+  subtextCalculator,
+  form,
+  btnCalculator,
+  result
+);
+
+sectionRight.appendChild(border);
+
+mainInnerOne.append(sectionLeft, sectionRight);
+
+// INSERARE ÎN WRAPPER CORECT
+mainWrapper.insertBefore(mainInnerOne, mainWrapper.firstChild);

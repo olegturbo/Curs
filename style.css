@@ -7,6 +7,7 @@
                 width: 1300px;
                 margin: 0 auto;
                 padding: 20px;
+
             }
 
             .header {
@@ -63,6 +64,7 @@
 
             .header__inner-left {
                 padding-bottom: 35px;
+                margin-right: 62px;
             }
 
             .info-marfa {
@@ -112,6 +114,7 @@
                 font-weight: 700;
                 cursor: pointer;
                 transition: 0.3s;
+                margin-right: 65px;
             }
 
             .btn:hover {
