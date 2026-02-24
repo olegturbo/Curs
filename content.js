@@ -1,15 +1,15 @@
-// ============HEADER=============================
+// ============ HEADER =============================
 const wrapper = document.querySelector('.wrapper');
 
 // Creare header
 const header = document.createElement('header');
 header.className = 'header';
 
-// Containerul din dreapta header
+// ================= DREAPTA ======================
 const headerInnerRight = document.createElement('div');
 headerInnerRight.className = 'header__inner-right';
 
-// Figure cu logo-ul
+// Logo
 const figure = document.createElement('figure');
 figure.className = 'right-caption';
 
@@ -24,7 +24,7 @@ figcaption.textContent = 'FromBoard Delivery';
 figure.appendChild(imgLogo);
 figure.appendChild(figcaption);
 
-// Navigația
+// Navigație
 const nav = document.createElement('nav');
 nav.className = 'navbar';
 
@@ -46,42 +46,43 @@ linksData.forEach(linkInfo => {
 headerInnerRight.appendChild(figure);
 headerInnerRight.appendChild(nav);
 
-// Containerul din stânga header
+// ================= STÂNGA ======================
 const headerContainerLeft = document.createElement('div');
 headerContainerLeft.className = 'header__container-left';
 
 const headerInnerLeft = document.createElement('div');
 headerInnerLeft.className = 'header__inner-left';
 
-const deliveryInfo = {
-  message: "Aducem orice marfa in Moldova de peste hotare",
-  minPrice: 100,
-  currencyRates: {
-    USD: 16.7,
-    EUR: 20
-  },
-  phone: "+373 (60)-00-000",
-  phoneInfo: "Apelurile gratuite in MD"
-};
+// Fetch date
+fetch('./deliveryInfo.json')
+  .then(res => {
+    if (!res.ok) throw new Error('Nu pot încărca deliveryInfo.json');
+    return res.json();
+  })
+  .then(deliveryInfo => {
+    const pInfoMarfa = document.createElement('p');
+    pInfoMarfa.className = 'info-marfa';
+    pInfoMarfa.innerHTML = `
+      ${deliveryInfo.message}<br>
+      Pretul incepe de la ${deliveryInfo.minPrice} de lei pe comanda<br>
+      1 $ = ${deliveryInfo.currencyRates.USD} MDL | 
+      1 € = ${deliveryInfo.currencyRates.EUR} MDL
+      <span class="delimiter"></span>
+    `;
 
-// Creezi elementul pentru info marfa
-const pInfoMarfa = document.createElement('p');
-pInfoMarfa.className = 'info-marfa';
-pInfoMarfa.innerHTML = `${deliveryInfo.message}<br>
-Pretul incepe de la ${deliveryInfo.minPrice} de lei pe comanda<br>
-1 $ = ${deliveryInfo.currencyRates.USD} MDL | 1 € = ${deliveryInfo.currencyRates.EUR} MDL
-<span class="delimiter"></span>`;
+    const pPhone = document.createElement('p');
+    pPhone.className = 'phone';
+    pPhone.innerHTML = `
+      <strong class="strong">${deliveryInfo.phone}</strong><br>
+      ${deliveryInfo.phoneInfo}
+    `;
 
+    headerInnerLeft.appendChild(pInfoMarfa);
+    headerInnerLeft.appendChild(pPhone);
+  })
+  .catch(err => console.error(err));
 
-// Creezi elementul pentru telefon
-const pPhone = document.createElement('p');
-pPhone.className = 'phone';
-pPhone.innerHTML = `<strong class="strong">${deliveryInfo.phone}</strong><br>${deliveryInfo.phoneInfo}`;
-
-
-headerInnerLeft.appendChild(pInfoMarfa);
-headerInnerLeft.appendChild(pPhone);
-
+// Buton
 const containerBtn = document.createElement('div');
 containerBtn.className = 'container-btn';
 
@@ -91,13 +92,15 @@ btn.textContent = 'Lasă o cerere';
 
 containerBtn.appendChild(btn);
 
+// Asamblare
 headerContainerLeft.appendChild(headerInnerLeft);
 headerContainerLeft.appendChild(containerBtn);
 
 header.appendChild(headerInnerRight);
 header.appendChild(headerContainerLeft);
+wrapper.appendChild(header);
 
-
+// ========================================================================================
 
 // Inserează headerul înainte de primul copil al .wrapper (dacă vrei să păstrezi ordinea)
 wrapper.insertBefore(header, wrapper.firstChild);
@@ -118,19 +121,17 @@ sectionLeft.className = 'main__inner-left';
 
 const title = document.createElement('h1');
 title.className = 'title';
-title.innerHTML = `
-Livrare fără probleme a articolelor <br>
-achiziționate din SUA, Europa și Asia <br>
-în Moldova
-`;
 
 const subtext = document.createElement('h3');
 subtext.className = 'subtext';
-subtext.innerHTML = `
-Economisiți la cumpărături și bucurați-vă de mărci globale - <br>
-serviciul nostru vă permite să comandați ușor și convenabil produse din întreaga <br>
-lume și să le primiți în Moldova
-`;
+
+fetch('./headerText.json')
+  .then(res => res.json())
+  .then(data => {
+    title.innerHTML = data.title;
+    subtext.innerHTML = data.subtext;
+  })
+  .catch(err => console.error("Eroare JSON:", err));
 
 const imgRectangle = document.createElement('img');
 imgRectangle.className = 'img-rectlange';
