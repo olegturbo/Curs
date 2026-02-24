@@ -242,6 +242,8 @@ btnCalculator.className = 'btn btn-calculator';
 btnCalculator.textContent = 'Comanda o calculare';
 
 
+
+
 // ================= REZULTAT =================
 const result = document.createElement('div');
 result.className = 'calculator-result';
@@ -252,14 +254,22 @@ result.style.fontWeight = 'bold';
 
 // ================= LOGICA CALCULATOR =================
 btnCalculator.addEventListener('click', () => {
-
-  const greutate = parseFloat(form.querySelector('[name="greutate"]').value) || 0;
+  // Preluăm toate valorile inputurilor
+  const name = form.querySelector('[name="name"]').value.trim();
+  const email = form.querySelector('[name="email"]').value.trim();
+  const telefon = form.querySelector('[name="telefon"]').value.trim();
   const suprafata = parseFloat(form.querySelector('[name="suprafata"]').value) || 0;
+  const greutate = parseFloat(form.querySelector('[name="greutate"]').value) || 0;
+  const tara = form.querySelector('[name="tara"]').value.trim();
+  const orasCumparare = form.querySelector('[name="oras_cumparare"]').value.trim();
+  const zonaLivrare = form.querySelector('[name="zona_livrare"]').value.trim();
+  const orasLivrare = form.querySelector('[name="oras_livrare"]').value.trim();
 
-  if (greutate <= 0) {
+
+  if (!name || !email || !telefon || greutate <= 0 || suprafata <= 0 || !tara || !orasCumparare || !zonaLivrare || !orasLivrare) {
     result.style.fontFamily = 'Inter,sans-serif';
-    result.textContent = "Introduceți greutatea corectă!";
     result.style.color = "red";
+    result.textContent = "Vă rugăm să completați toate câmpurile corect!";
     return;
   }
 
@@ -273,8 +283,13 @@ btnCalculator.addEventListener('click', () => {
 
   result.style.fontFamily = 'Inter,sans-serif';
   result.style.color = "green";
-  result.textContent = `Cost estimativ livrare: ${total.toFixed(2)} MDL`;
+  result.innerHTML = `
+    Salut, <b>${name}</b>!<br>
+    Cost estimativ livrare din <b>${tara}, ${orasCumparare}</b> către <b>${orasLivrare}, ${zonaLivrare}</b> este: <b>${total.toFixed(2)} MDL</b>.<br>
+    Contact: ${email}, ${telefon}
+  `;
 });
+
 
 
 // ================= ASAMBLARE =================
