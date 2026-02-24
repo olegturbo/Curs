@@ -1,15 +1,15 @@
-// ============ HEADER =============================
+// ============HEADER=============================
 const wrapper = document.querySelector('.wrapper');
 
 // Creare header
 const header = document.createElement('header');
 header.className = 'header';
 
-// ================= DREAPTA ======================
+// Containerul din dreapta header
 const headerInnerRight = document.createElement('div');
 headerInnerRight.className = 'header__inner-right';
 
-// Logo
+// Figure cu logo-ul
 const figure = document.createElement('figure');
 figure.className = 'right-caption';
 
@@ -24,7 +24,7 @@ figcaption.textContent = 'FromBoard Delivery';
 figure.appendChild(imgLogo);
 figure.appendChild(figcaption);
 
-// Navigație
+// Navigația
 const nav = document.createElement('nav');
 nav.className = 'navbar';
 
@@ -46,43 +46,42 @@ linksData.forEach(linkInfo => {
 headerInnerRight.appendChild(figure);
 headerInnerRight.appendChild(nav);
 
-// ================= STÂNGA ======================
+// Containerul din stânga header
 const headerContainerLeft = document.createElement('div');
 headerContainerLeft.className = 'header__container-left';
 
 const headerInnerLeft = document.createElement('div');
 headerInnerLeft.className = 'header__inner-left';
 
-// Fetch date
-fetch('./deliveryInfo.json')
-  .then(res => {
-    if (!res.ok) throw new Error('Nu pot încărca deliveryInfo.json');
-    return res.json();
-  })
-  .then(deliveryInfo => {
-    const pInfoMarfa = document.createElement('p');
-    pInfoMarfa.className = 'info-marfa';
-    pInfoMarfa.innerHTML = `
-      ${deliveryInfo.message}<br>
-      Pretul incepe de la ${deliveryInfo.minPrice} de lei pe comanda<br>
-      1 $ = ${deliveryInfo.currencyRates.USD} MDL | 
-      1 € = ${deliveryInfo.currencyRates.EUR} MDL
-      <span class="delimiter"></span>
-    `;
+const deliveryInfo = {
+  message: "Aducem orice marfa in Moldova de peste hotare",
+  minPrice: 100,
+  currencyRates: {
+    USD: 16.7,
+    EUR: 20
+  },
+  phone: "+373 (60)-00-000",
+  phoneInfo: "Apelurile gratuite in MD"
+};
 
-    const pPhone = document.createElement('p');
-    pPhone.className = 'phone';
-    pPhone.innerHTML = `
-      <strong class="strong">${deliveryInfo.phone}</strong><br>
-      ${deliveryInfo.phoneInfo}
-    `;
+// Creezi elementul pentru info marfa
+const pInfoMarfa = document.createElement('p');
+pInfoMarfa.className = 'info-marfa';
+pInfoMarfa.innerHTML = `${deliveryInfo.message}<br>
+Pretul incepe de la ${deliveryInfo.minPrice} de lei pe comanda<br>
+1 $ = ${deliveryInfo.currencyRates.USD} MDL | 1 € = ${deliveryInfo.currencyRates.EUR} MDL
+<span class="delimiter"></span>`;
 
-    headerInnerLeft.appendChild(pInfoMarfa);
-    headerInnerLeft.appendChild(pPhone);
-  })
-  .catch(err => console.error(err));
 
-// Buton
+// Creezi elementul pentru telefon
+const pPhone = document.createElement('p');
+pPhone.className = 'phone';
+pPhone.innerHTML = `<strong class="strong">${deliveryInfo.phone}</strong><br>${deliveryInfo.phoneInfo}`;
+
+
+headerInnerLeft.appendChild(pInfoMarfa);
+headerInnerLeft.appendChild(pPhone);
+
 const containerBtn = document.createElement('div');
 containerBtn.className = 'container-btn';
 
@@ -92,15 +91,29 @@ btn.textContent = 'Lasă o cerere';
 
 containerBtn.appendChild(btn);
 
-// Asamblare
 headerContainerLeft.appendChild(headerInnerLeft);
 headerContainerLeft.appendChild(containerBtn);
 
 header.appendChild(headerInnerRight);
 header.appendChild(headerContainerLeft);
-wrapper.appendChild(header);
 
-// ========================================================================================
+
+btn.addEventListener('click', () => {
+  if (!containerBtn.querySelector('.mesaj-trimis')) {
+    const mesaj = document.createElement('p');
+    mesaj.className = 'mesaj-trimis';
+    mesaj.textContent = 'Cererea a fost trimisă cu succes!';
+
+    mesaj.style.color = 'green';
+    mesaj.style.fontWeight = '400';
+    mesaj.style.paddingRight = '35px';
+    mesaj.style.fontFamily = 'Inter,sans-serif';
+
+    containerBtn.appendChild(mesaj);
+  }
+});
+
+
 
 // Inserează headerul înainte de primul copil al .wrapper (dacă vrei să păstrezi ordinea)
 wrapper.insertBefore(header, wrapper.firstChild);
@@ -233,6 +246,7 @@ btnCalculator.textContent = 'Comanda o calculare';
 const result = document.createElement('div');
 result.className = 'calculator-result';
 result.style.marginTop = '15px';
+result.style.paddingLeft = "35px";
 result.style.fontWeight = 'bold';
 
 
@@ -243,6 +257,7 @@ btnCalculator.addEventListener('click', () => {
   const suprafata = parseFloat(form.querySelector('[name="suprafata"]').value) || 0;
 
   if (greutate <= 0) {
+    result.style.fontFamily = 'Inter,sans-serif';
     result.textContent = "Introduceți greutatea corectă!";
     result.style.color = "red";
     return;
@@ -256,6 +271,7 @@ btnCalculator.addEventListener('click', () => {
 
   const total = basePrice + (greutate * pricePerKg) + (suprafata * pricePerM2);
 
+  result.style.fontFamily = 'Inter,sans-serif';
   result.style.color = "green";
   result.textContent = `Cost estimativ livrare: ${total.toFixed(2)} MDL`;
 });
