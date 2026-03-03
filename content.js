@@ -288,7 +288,44 @@ btnCalculator.addEventListener('click', () => {
     Cost estimativ livrare din <b>${tara}, ${orasCumparare}</b> către <b>${orasLivrare}, ${zonaLivrare}</b> este: <b>${total.toFixed(2)} MDL</b>.<br>
     Contact: ${email}, ${telefon}
   `;
+  // ================= SALVARE LOCAL STORAGE =================
+  const formData = {
+    name,
+    email,
+    telefon,
+    suprafata,
+    greutate,
+    tara,
+    orasCumparare,
+    zonaLivrare,
+    orasLivrare
+  };
+
+  localStorage.setItem("calculatorData", JSON.stringify(formData));
 });
+
+// ================= RESTAURARE DATE =================
+
+window.addEventListener("DOMContentLoaded", () => {
+  const savedData = localStorage.getItem("calculatorData");
+
+  if (savedData) {
+    const data = JSON.parse(savedData);
+
+    form.querySelector('[name="name"]').value = data.name || "";
+    form.querySelector('[name="email"]').value = data.email || "";
+    form.querySelector('[name="telefon"]').value = data.telefon || "";
+    form.querySelector('[name="suprafata"]').value = data.suprafata || "";
+    form.querySelector('[name="greutate"]').value = data.greutate || "";
+    form.querySelector('[name="tara"]').value = data.tara || "";
+    form.querySelector('[name="oras_cumparare"]').value = data.orasCumparare || "";
+    form.querySelector('[name="zona_livrare"]').value = data.zonaLivrare || "";
+    form.querySelector('[name="oras_livrare"]').value = data.orasLivrare || "";
+  }
+});
+
+
+
 
 
 
